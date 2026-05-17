@@ -62,4 +62,20 @@ public class VeiculoController {
         }
         return "Veículo não encontrado.";
     }
+
+    @GetMapping("/buscar")
+    public List<Veiculo> buscarPorMarca(@RequestParam String marca){
+
+        List<Veiculo> encontrados = new ArrayList<>();
+
+        for (Veiculo veiculo : listaVeiculo){
+
+            if (veiculo.getMarca().equalsIgnoreCase(marca)){
+                encontrados.add(veiculo);
+            }
+
+        }
+
+        return encontrados;
+    }
 }
