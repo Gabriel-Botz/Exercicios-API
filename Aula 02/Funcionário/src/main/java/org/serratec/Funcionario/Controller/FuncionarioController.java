@@ -1,6 +1,7 @@
 package org.serratec.Funcionario.Controller;
 
 import org.serratec.Funcionario.Domain.Funcionario;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class FuncionarioController {
         return listaFuncionario;
     }
 
-    @GetMapping("buscarPorId/{id}")
+    @GetMapping("/buscarPorId/{id}")
     public Funcionario buscarPorId(@PathVariable Long id){
         for (int i = 0; i < listaFuncionario.size(); i++){
             if (listaFuncionario.get(i).getId().equals(id))
@@ -36,7 +37,7 @@ public class FuncionarioController {
         return null;
     }
 
-    @GetMapping("buscarPorCargo")
+    @GetMapping("/buscarPorCargo")
     public List<Funcionario> buscarPorCargo (@RequestParam String cargo){
 
         List<Funcionario> encontrados = new ArrayList<>();
@@ -49,7 +50,14 @@ public class FuncionarioController {
         return encontrados;
     }
 
-
+    @PostMapping("/criar")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Funcionario cadastroFuncionario(@RequestBody Funcionario funcionario){
+        listaFuncionario.add(funcionario);
+        return funcionario;
+    }
 
 
 }
+
+
