@@ -57,6 +57,17 @@ public class FuncionarioController {
         return funcionario;
     }
 
+    @PutMapping("alterar/{id}")
+    public Funcionario alterarFuncionario(@RequestBody Funcionario atualizado, @PathVariable Long id){
+        for (int i = 0; i < listaFuncionario.size(); i++){
+          if (listaFuncionario.get(i).getId().equals(id)){
+              listaFuncionario.set(i, atualizado);
+              return atualizado;
+          }
+        }
+        return null;
+    }
+
 
 }
 
