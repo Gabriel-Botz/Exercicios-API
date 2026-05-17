@@ -68,6 +68,15 @@ public class FuncionarioController {
         return null;
     }
 
+    @DeleteMapping("deletar/{id}")
+    public void deletarPorId(@PathVariable Long id){
+        for (int i = 0; i < listaFuncionario.size(); i++){
+            if (listaFuncionario.get(i).getId().equals(id)){
+                listaFuncionario.remove(i);
+            }
+        }
+    }
+
 
 }
 
