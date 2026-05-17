@@ -6,9 +6,9 @@ public class Funcionario {
     private String nome;
     private String cargo;
 
-    public Funcionario(String cargo, Long id, String nome) {
-        this.cargo = cargo;
+    public Funcionario(Long id, String nome, String cargo) {
         this.id = id;
+        this.cargo = cargo;
         this.nome = nome;
     }
 
