@@ -4,16 +4,20 @@ package org.serratec.Exercicio03.Domain;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
+
 public class Funcionario {
 
     private Long id;
     private String nome;
     private String cargo;
+    private BigDecimal salario;
 
-    public Funcionario(Long id, String nome, String cargo) {
+    public Funcionario(String cargo, Long id, String nome, BigDecimal salario) {
         this.cargo = cargo;
         this.id = id;
         this.nome = nome;
+        this.salario = salario;
     }
 
     public Funcionario() {
@@ -41,5 +45,13 @@ public class Funcionario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
+    public void setSalario(BigDecimal salario) {
+        this.salario = salario;
     }
 }
