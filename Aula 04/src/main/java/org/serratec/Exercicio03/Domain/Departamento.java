@@ -29,12 +29,12 @@ public class Departamento {
 
     }
 
-    public Long getCod() {
+    public Long getId() {
         return id;
     }
 
-    public void setCod(Long cod) {
-        this.id = cod;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getGerente() {
