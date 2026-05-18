@@ -18,8 +18,8 @@ public class Departamento {
     @Column(name = "gerente", nullable = false,length = 40)
     private String gerente;
 
-    public Departamento(Long cod, String gerente, String nome, String setor) {
-        this.cod = cod;
+    public Departamento(Long id, String gerente, String nome, String setor) {
+        this.id = id;
         this.gerente = gerente;
         this.nome = nome;
         this.setor = setor;
@@ -30,11 +30,11 @@ public class Departamento {
     }
 
     public Long getCod() {
-        return cod;
+        return id;
     }
 
     public void setCod(Long cod) {
-        this.cod = cod;
+        this.id = cod;
     }
 
     public String getGerente() {
