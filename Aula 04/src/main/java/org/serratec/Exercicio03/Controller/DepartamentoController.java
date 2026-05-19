@@ -2,11 +2,11 @@ package org.serratec.Exercicio03.Controller;
 
 import jakarta.validation.Valid;
 import org.serratec.Exercicio03.Domain.Departamento;
+import org.serratec.Exercicio03.Exception.RecursoNaoEncontradoException;
 import org.serratec.Exercicio03.Repository.DepartamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,11 +26,10 @@ public class DepartamentoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Departamento> buscarPorId(@PathVariable Long id){
-        Optional<Departamento> departamento = departamentoRepository.findById(id);
-        if (departamento.isPresent()){
-            return ResponseEntity.ok(departamento.get());
-        }
-        return ResponseEntity.notFound().build();
+        Departamento departamento = departamentoRepository.findById(id)
+                .orElseThrow(() -> new RecursoNaoEncontradoException("Departamento " + id + " não encontrado"));
+
+        return ResponseEntity.ok(departamento);
     }
 
     @PostMapping
