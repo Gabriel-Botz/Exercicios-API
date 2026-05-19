@@ -1,5 +1,6 @@
 package org.serratec.Exercicio03.Controller;
 
+import jakarta.validation.Valid;
 import org.serratec.Exercicio03.Domain.Departamento;
 import org.serratec.Exercicio03.Repository.DepartamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,12 @@ public class DepartamentoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Departamento criar (@RequestBody Departamento departamento){
+    public Departamento criar (@RequestBody @Valid Departamento departamento){
         return departamentoRepository.save(departamento);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Departamento> editar(@RequestBody Departamento departamento, @PathVariable Long id){
+    public ResponseEntity<Departamento> editar(@RequestBody @Valid Departamento departamento, @PathVariable Long id){
         if (!departamentoRepository.existsById(id)){
             return ResponseEntity.notFound().build();
         }
